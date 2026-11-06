@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nur Zikr</title>
+<style>
+:root{--bg:#f4f1e8;--card:#fff;--tx:#1d2b24;--mut:#6b7a72;--ac:#1f7a5a;--gold:#b8892b;--bd:#e3ddcc;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1a15;--card:#18271f;--tx:#eef3ef;--mut:#93a69b;--ac:#3fb98a;--gold:#e0b04e;--bd:#25382d;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1a15;--card:#18271f;--tx:#eef3ef;--mut:#93a69b;--ac:#3fb98a;--gold:#e0b04e;--bd:#25382d;color-scheme:dark}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+body{padding:14px 14px 84px;max-width:560px;margin:auto}
+h1{font-size:18px;margin:4px 0 12px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:14px;margin-bottom:10px}
+.ar{font-family:"Amiri","Traditional Arabic",serif;direction:rtl}
+.hero{text-align:center;background:linear-gradient(135deg,var(--ac),#145a42);color:#fff;border:0}
+.hero small{opacity:.85}.hero .big{font-size:40px;font-weight:700;letter-spacing:1px}
+.row{display:flex;justify-content:space-between;align-items:center;padding:10px 4px;border-bottom:1px solid var(--bd)}
+.row:last-child{border:0}.row.on{color:var(--ac);font-weight:700}.row b{font-variant-numeric:tabular-nums}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--card);border-top:1px solid var(--bd);padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px))}
+nav button{flex:1;border:0;background:none;color:var(--mut);font-size:12px;padding:8px 2px;border-radius:10px}
+nav button.a{color:var(--ac);font-weight:700;background:var(--bg)}
+.tap{width:220px;height:220px;border-radius:50%;border:6px solid var(--gold);background:var(--card);color:var(--tx);font-size:64px;font-weight:700;display:block;margin:14px auto;-webkit-tap-highlight-color:transparent}
+.tap:active{transform:scale(.97);background:var(--bg)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.chips button,.btn{border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:20px;padding:7px 12px;font-size:13px}
+.chips button.a{background:var(--ac);color:#fff;border-color:var(--ac)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.nm{text-align:center;padding:10px 6px}.nm .ar{font-size:26px;color:var(--gold)}.nm i{font-size:11px;color:var(--mut);display:block}.nm span{font-size:12px}
+details{border-bottom:1px solid var(--bd);padding:10px 0}summary{font-weight:600}
+details .ar{font-size:22px;line-height:2;margin:8px 0}details p{margin:4px 0;color:var(--mut);font-size:14px}
+.pane{display:none}.pane.a{display:block}
+
+#sc{position:fixed;inset:0;z-index:50;background:#1c2a2e;color:#fff;overflow:hidden;touch-action:manipulation;user-select:none}
+#sc[hidden]{display:none}
+#sc svg#bg,#sc canvas#rain{position:absolute;inset:0;width:100%;height:100%}
+#sc .top{position:absolute;top:calc(7vh + env(safe-area-inset-top,0px));left:0;right:0;text-align:center;padding:0 16px}
+#sc .top .ar{font-size:54px;line-height:1.5;direction:rtl}
+#sc .ln{width:150px;height:1px;background:rgba(255,255,255,.4);margin:6px auto 10px;position:relative}
+#sc .ln:after{content:"";position:absolute;left:50%;top:-3px;width:6px;height:6px;background:#e8512f;transform:translateX(-50%) rotate(45deg)}
+#sc .top b{font-size:20px;display:block}#sc .top small{opacity:.75;font-size:13px}
+#bd{position:absolute;left:0;top:34%;width:100%;height:170px}
+#ct{position:absolute;left:50%;top:calc(34% + 210px);transform:translateX(-50%);width:84px;height:84px;text-align:center}
+#ct svg{position:absolute;inset:0}#ct b{position:absolute;left:0;right:0;top:20px;font-size:26px}#ct small{position:absolute;left:0;right:0;top:52px;font-size:11px;opacity:.7}
+#fin{position:absolute;left:0;right:0;bottom:12vh;text-align:center;opacity:0;transition:opacity .5s;padding:0 16px}
+#fin .ar{font-size:30px}#fin small{opacity:.8;display:block;margin-top:2px}
+#sc .tb{position:absolute;top:calc(10px + env(safe-area-inset-top,0px));border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.3);color:#fff;border-radius:18px;padding:6px 12px;font-size:13px}
+#x{left:12px}#tg{right:12px}
+.cnt{float:right;color:var(--ac);font-weight:700;font-size:13px}
+.dz{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.dz .ar{font-size:24px;color:var(--gold)}
+.tr{font-style:italic;color:var(--tx);font-size:14px;margin:2px 0}
+html{background:var(--bg)}body{background:transparent}
+nav button{font-size:11px}
+#bgs{position:fixed;left:0;right:0;top:0;height:44vh;z-index:-1;opacity:.6;-webkit-mask-image:linear-gradient(#000 45%,transparent);mask-image:linear-gradient(#000 45%,transparent)}
+#bgs svg,#sp svg{width:100%;height:100%;display:block}
+#sp{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;transition:opacity .8s}
+#sp svg{position:absolute;inset:0;z-index:-1}
+#sp h2{font-size:42px;letter-spacing:5px;margin:6px 0 4px;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+#sp .ar{font-size:34px;color:#f6e7b4}#sp small{opacity:.85;letter-spacing:1px}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
+.cal div{padding:5px 0;border-radius:8px;font-size:14px}.cal small{display:block;font-size:10px;color:var(--mut)}
+.cal .td{background:var(--ac);color:#fff}.cal .td small{color:#fff}.cal .hd{font-size:11px;color:var(--mut)}
+#sc.lg .top{top:calc(50px + env(safe-area-inset-top,0px));max-height:calc(54% - 56px);overflow-y:auto}
+#sc.lg .top .ar{font-size:19px;line-height:1.8}#sc.lg .top b{font-size:12px;font-weight:600}#sc.lg .top small{font-size:12px}
+#sc.lg #bd{top:54%}#sc.lg #ct{top:calc(54% + 168px)}#sc.lg #fin{bottom:4px}#sc.lg #fin .ar{font-size:18px}#sc.lg #fin small{font-size:11px}
+body{font-size:18px;line-height:1.45}h1{font-size:23px}
+.row{font-size:20px;padding:13px 4px}.hero .big{font-size:46px}.hero small{font-size:15px}
+.tr{font-size:18px}details p{font-size:17px}summary{font-size:19px}details .ar{font-size:32px;line-height:2.1}
+#dz .ar{font-size:34px!important;line-height:1.9!important}
+.nm .ar{font-size:34px}.nm i{font-size:13px}.nm b{font-size:17px}.nm span{font-size:15px}
+small{font-size:15px}p[style*="font-size:12px"]{font-size:15px!important}#hd p{font-size:22px!important}
+.cnt{font-size:17px}.btn,.chips button{font-size:16px;padding:10px 16px}nav button{font-size:13px;letter-spacing:-.2px}
+.cal div{font-size:17px;padding:8px 0}.cal small{font-size:11px}.cal .hd{font-size:13px}
+#sc .top b{font-size:24px}#sc .top small{font-size:16px}
+#sc.lg .top .ar{font-size:25px}#sc.lg .top b{font-size:15px}#sc.lg .top small{font-size:15px}
+#ct{width:100px;height:100px}#ct b{top:26px;font-size:34px}#ct small{top:66px;font-size:14px}
+#fin .ar{font-size:34px}#fin small{font-size:16px}#sc.lg #fin .ar{font-size:22px}#sc.lg #fin small{font-size:13px}
+#sc .tb{font-size:16px;padding:8px 14px}#sp h2{font-size:46px}
+.tr{font-size:23px;line-height:1.5}details p{font-size:19px}
+.nm b{font-size:21px}.nm span{font-size:17px}.nm i{font-size:14px}
+#sc .top b{font-size:31px;line-height:1.3}#sc .top small{font-size:19px}
+#sc.lg .top b{font-size:22px;line-height:1.45}#sc.lg .top small{font-size:17px}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a1530"/><stop offset=".6" stop-color="#1f4e6b"/><stop offset=".82" stop-color="#d68f55"/></linearGradient><mask id="mk"><rect x="200" y="50" width="160" height="120" fill="#fff"/><circle cx="284" cy="102" r="24" fill="#000"/></mask></defs>
+<symbol id="scn" viewBox="0 0 360 640" preserveAspectRatio="xMidYMax slice"><rect width="360" height="640" fill="url(#g1)"/><g fill="#fff" opacity=".8"><circle cx="40" cy="60" r="1.2"/><circle cx="120" cy="30" r="1"/><circle cx="200" cy="80" r="1.4"/><circle cx="310" cy="40" r="1"/><circle cx="330" cy="170" r="1.2"/><circle cx="70" cy="140" r="1"/><circle cx="160" cy="150" r="1.1"/><circle cx="250" cy="25" r="1"/></g><circle cx="270" cy="110" r="28" fill="#f6e7b4" mask="url(#mk)"/>
+<g fill="#0b1b2a"><path d="M110 520V470Q110 400 180 400Q250 400 250 470V520Z"/><rect x="179" y="372" width="2" height="30"/><circle cx="180" cy="370" r="3"/><path d="M78 520Q78 490 105 490Q132 490 132 520Z"/><path d="M228 520Q228 490 255 490Q282 490 282 520Z"/><rect x="62" y="330" width="16" height="190"/><path d="M59 330H81L70 296Z"/><rect x="56" y="385" width="28" height="6"/><rect x="282" y="330" width="16" height="190"/><path d="M279 330H301L290 296Z"/><rect x="276" y="385" width="28" height="6"/><rect x="0" y="520" width="360" height="120"/></g>
+<g fill="#f2c46b"><rect x="170" y="450" width="6" height="14" rx="3"/><rect x="184" y="450" width="6" height="14" rx="3"/><rect x="66" y="420" width="4" height="9"/><rect x="290" y="420" width="4" height="9"/></g></symbol></svg>
+<div id="bgs"><svg><use href="#scn"/></svg></div>
+<div id="sp"><svg><use href="#scn"/></svg><div class="ar">بِسْمِ اللَّهِ</div><h2>NUR ZIKR</h2><small>Zikr · Duwa · Namaz · Hadis · Kalendar</small></div>
+<section id="t0" class="pane a">
+  <h1>Nókis qalası · namaz waqıtları</h1>
+  <div class="card hero"><small id="nx">Keyingi namaz</small><div class="big" id="cd">--:--:--</div><small id="clk"></small></div>
+  <div class="card" id="times"></div>
+  <p style="font-size:12px;color:var(--mut)">Waqıtlar esaplanǵan (Nókis, UTC+5, Hanafiy asr). Mashqala menen 1-2 minut parıq bolıwı múmkin.</p>
+</section>
+<section id="t1" class="pane"><h1>Zikr tasbex</h1><div id="dz"></div><p style="font-size:12px;color:var(--mut)">Tasbexti ashıw ushın zikrdi basıń, ekranǵa tiyip sanań.</p></section>
+<section id="t2" class="pane"><h1>Allahtıń 99 ásmaları</h1><div class="grid" id="names"></div></section>
+<section id="t3" class="pane"><h1>Kúndelikli duwalar</h1><div class="card" id="duas"></div></section>
+<div id="sc" hidden>
+<svg id="bg" viewBox="0 0 360 640" preserveAspectRatio="xMidYMax slice"><defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1d272b"/><stop offset=".5" stop-color="#3d5254"/><stop offset="1" stop-color="#8aa39a"/></linearGradient></defs><rect width="360" height="640" fill="url(#sk)"/><path d="M0 400 Q90 340 180 390 T360 360 V640 H0Z" fill="#6f8878"/><path d="M0 450 Q120 400 230 440 T360 420 V640 H0Z" fill="#587a5c"/><path d="M0 520 Q100 470 200 510 T360 490 V640 H0Z" fill="#3f6a45"/><path d="M0 590 Q140 540 260 580 T360 570 V640 H0Z" fill="#2f5a38"/><rect x="262" y="420" width="6" height="60" fill="#5a4430"/><circle cx="265" cy="410" r="26" fill="#8c8b62" opacity=".9"/><circle cx="252" cy="424" r="16" fill="#7f7d58" opacity=".9"/></svg>
+<canvas id="rain"></canvas>
+<button class="tb" id="x">✕ Jabıw</button><button class="tb" id="tg">33</button>
+<div class="top"><div class="ar" id="sa"></div><div class="ln"></div><b id="sl"></b><small id="sm"></small></div>
+<canvas id="bd"></canvas>
+<div id="ct"><svg viewBox="0 0 84 84"><circle cx="42" cy="42" r="36" fill="#141a1f" stroke="rgba(255,255,255,.15)" stroke-width="4"/><circle id="rg" cx="42" cy="42" r="36" fill="none" stroke="#e8512f" stroke-width="4" stroke-linecap="round" stroke-dasharray="226" stroke-dashoffset="226" transform="rotate(-90 42 42)"/></svg><b id="cn">0</b><small id="cg">/33</small></div>
+<div id="fin"><div class="ar">تَقَبَّلَ اللَّهُ مِنَّا وَمِنكُم</div><small>Taqabbalallahu minna wa minkum</small><small>Alla bizden hám sizden qabıl etsin</small></div>
+</div>
+<section id="t4" class="pane"><h1>Kúndelikli hadis</h1><div class="card" id="hd"></div><div class="card" id="ha"></div></section>
+<section id="t5" class="pane"><h1>Islam kalendarı</h1><div class="card hero" id="hj"></div>
+<div class="card"><div class="dz" style="margin-bottom:8px"><button class="btn" id="mp">◀</button><b id="mt"></b><button class="btn" id="mn">▶</button></div><div class="cal" id="cal"></div></div>
+<div class="card" id="ev"></div><h1 id="rh">Ramazan oraza</h1><div class="card" id="rm"></div><div class="card" id="rd"></div></section>
+<nav id="nav"><button data-t="0" class="a">🕌<br>Waqıt</button><button data-t="1">📿<br>Tasbex</button><button data-t="2">✨<br>99 at</button><button data-t="3">🤲<br>Duwalar</button><button data-t="4">📖<br>Hadis</button><button data-t="5">🗓️<br>Kalendar</button></nav>
+<script>
+const $=s=>document.querySelector(s);
+// Tabs
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("nav button,.pane").forEach(e=>e.classList.remove("a"));
+  b.classList.add("a");$("#t"+b.dataset.t).classList.add("a");scrollTo(0,0);
+});
+// Prayer times: Nukus 42.46N 59.61E, UTC+5
+const LAT=42.46,LNG=59.61,TZ=5,R=Math.PI/180;
+const sin=x=>Math.sin(x*R),cos=x=>Math.cos(x*R);
+function calc(y,m,d){
+  const D=Date.UTC(y,m,d,12)/864e5+2440587.5-2451545;
+  const g=(357.529+.98560028*D)%360,q=(280.459+.98564736*D)%360;
+  const L=(q+1.915*sin(g)+.02*sin(2*g))%360,e=23.439-3.6e-7*D;
+  let RA=Math.atan2(cos(e)*sin(L),cos(L))/R/15;RA=((RA%24)+24)%24;
+  const dec=Math.asin(sin(e)*sin(L))/R;
+  let eq=q/15-RA;eq=((eq+12)%24+24)%24-12;
+  const noon=12+TZ-LNG/15-eq;
+  const H=a=>Math.acos((sin(-a)-sin(LAT)*sin(dec))/(cos(LAT)*cos(dec)))/R/15;
+  const A=-Math.atan(1/(2+Math.tan(Math.abs(LAT-dec)*R)))/R;
+  const asr=Math.acos((sin(A)-sin(LAT)*sin(dec))/(cos(LAT)*cos(dec)))/R/15;
+  return [["Bamdat",noon-H(18)],["Quyash",noon-H(.833)],["Peshin",noon+.02],["Asr",noon+asr],["Shám",noon+H(.833)],["Quptan",noon+H(17)]];
+}
+const hm=t=>{const m=Math.round(t*60);return String(Math.floor(m/60)%24).padStart(2,"0")+":"+String(m%60).padStart(2,"0")};
+function tick(){
+  const n=new Date(Date.now()+TZ*36e5);
+  const T=calc(n.getUTCFullYear(),n.getUTCMonth(),n.getUTCDate());
+  const now=n.getUTCHours()+n.getUTCMinutes()/60+n.getUTCSeconds()/3600;
+  let i=T.findIndex(x=>x[1]>now),nt;
+  if(i<0){i=0;nt=T[0][1]+24}else nt=T[i][1];
+  const s=Math.max(0,Math.round((nt-now)*3600));
+  $("#cd").textContent=[s/3600|0,(s/60)%60|0,s%60].map(v=>String(v).padStart(2,"0")).join(":");
+  $("#nx").textContent="Keyingi: "+T[i][0];
+  $("#clk").textContent="Nókis waqtı: "+hm(now)+" · "+n.getUTCDate()+"."+(n.getUTCMonth()+1)+"."+n.getUTCFullYear();
+  $("#times").innerHTML=T.map((x,j)=>`<div class="row${j==i?" on":""}"><span>${x[0]}</span><b>${hm(x[1])}</b></div>`).join("");
+}
+tick();setInterval(tick,1000);
+// Tasbex scene
+const DZ=[["Subhanallah","سُبْحَانَ اللَّهِ","Alla pák (barlıq kemshilikten)",33],["Alhamdulillah","الْحَمْدُ لِلَّهِ","Hámd Allaǵa tiyisli",33],["Allahu akbar","اللَّهُ أَكْبَر","Alla ullı",33],["La ilaha illallah","لَا إِلَهَ إِلَّا اللَّهُ","Allahtan basqa ilah joq",100],["Astaǵfirullah","أَسْتَغْفِرُ اللَّهَ","Allahtan keshirim soraymán",33],
+["Sallallahu ’alayhi wa sallam","صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ","Allanıń salawatı hám salamı oǵan bolsın",100],
+["Allahumma salli ’ala Muhammad","اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ","Ya Alla, Muhammedke salawat jiber",100],
+["Allahumma salli ’ala Muhammadin wa ’ala ali Muhammad","اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ","Ya Alla, Muhammedke hám onıń áwladına salawat jiber",100],
+["Sallallahu ’ala Muhammad","صَلَّى اللَّهُ عَلَى مُحَمَّدٍ","Alla Muhammedke salawat jiberdi",100],
+["Allahumma salli wa sallim wa barik ’ala sayyidina Muhammad","اللَّهُمَّ صَلِّ وَسَلِّمْ وَبَارِكْ عَلَى سَيِّدِنَا مُحَمَّدٍ","Ya Alla, sayyidimiz Muhammedke salawat, salam hám baraka jiber",100],
+["Allahumma salli ’ala Muhammadin wa ’ala ali Muhammadin kama sallayta ’ala Ibrahima wa ’ala ali Ibrahim, innaka Hamidun Majid. Allahumma barik ’ala Muhammadin wa ’ala ali Muhammadin kama barakta ’ala Ibrahima wa ’ala ali Ibrahim, innaka Hamidun Majid","اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ، اللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ","Ya Alla, Ibrahimge hám onıń áwladına salawat jibergeniń sıyaqlı Muhammedke hám onıń áwladına da salawat jiber; haqıyqatında Sen maqtawlı, ullısań. Ya Alla, Ibrahimge hám onıń áwladına baraka bergeniń sıyaqlı Muhammedke hám onıń áwladına da baraka ber; haqıyqatında Sen maqtawlı, ullısań.",33]];
+let C={};try{C=JSON.parse(localStorage.getItem("tsb2")||"{}")}catch(e){}
+const save=()=>{try{localStorage.setItem("tsb2",JSON.stringify(C))}catch(e){}};
+const vib=v=>navigator.vibrate&&navigator.vibrate(v);
+let cur=null,sh=0,an=1,drops=[];
+function upd(){const c=C[cur];$("#cn").textContent=c.n;$("#cg").textContent="/"+c.g;$("#tg").textContent=c.g;$("#rg").style.strokeDashoffset=226*(1-c.n/c.g)}
+function openS(k,ar,lat,m,g){
+  C[k]=C[k]||{n:0,r:0,t:0,g};cur=k;$("#sa").textContent=ar;$("#sc").classList.toggle("lg",ar.length>80);$("#sa").style.fontSize=ar.length>80?"":ar.length>22?"36px":"60px";$("#sl").textContent=lat;$("#sm").textContent=m;
+  $("#fin").style.opacity=C[k].n>=C[k].g?1:0;$("#sc").hidden=false;
+  const r=$("#rain"),b=$("#bd");r.width=innerWidth;r.height=innerHeight;b.width=innerWidth;b.height=170;
+  drops=Array.from({length:70},()=>({x:Math.random()*r.width,y:Math.random()*r.height,l:8+Math.random()*10,s:6+Math.random()*6}));
+  upd();loop();
+}
+function loop(){
+  if($("#sc").hidden)return;
+  const r=$("#rain"),x=r.getContext("2d");x.clearRect(0,0,r.width,r.height);x.strokeStyle="rgba(255,255,255,.3)";x.beginPath();
+  drops.forEach(d=>{x.moveTo(d.x,d.y);x.lineTo(d.x-2,d.y+d.l);d.y+=d.s;if(d.y>r.height){d.y=-12;d.x=Math.random()*r.width}});x.stroke();
+  const c=$("#bd"),g=c.getContext("2d"),W=c.width,H=c.height,N=13;g.clearRect(0,0,W,H);an=Math.min(1,an+.08);
+  const P=u=>[u*W,16+(H-50)*(1-Math.pow(2*u-1,2))*.9];
+  g.strokeStyle="rgba(255,255,255,.3)";g.beginPath();for(let i=0;i<=40;i++){const[p,q]=P(i/40);i?g.lineTo(p,q):g.moveTo(p,q)}g.stroke();
+  const s=sh-1+an;
+  for(let k=Math.floor(s)-1;k<=Math.ceil(s)+N+1;k++){const u=(k-s)/N;if(u<-.04||u>1.04)continue;const[p,q]=P(u),r2=6+6*(1-Math.abs(2*u-1));
+    g.fillStyle=((k%11)+11)%11==0?"#e8512f":"#6fb4b6";g.beginPath();g.arc(p,q,r2,0,7);g.fill()}
+  requestAnimationFrame(loop);
+}
+$("#sc").onclick=e=>{
+  if(e.target.closest("button"))return;
+  const c=C[cur];if(c.n>=c.g){c.n=0;$("#fin").style.opacity=0}
+  c.n++;c.t++;sh++;an=0;
+  if(c.n>=c.g){c.r++;vib([80,50,80]);$("#fin").style.opacity=1}else vib(12);
+  save();upd();
+};
+$("#tg").onclick=()=>{const c=C[cur],o=[33,99,100];c.g=o[(o.indexOf(c.g)+1)%3];c.n=Math.min(c.n,c.g);$("#fin").style.opacity=0;save();upd()};
+$("#x").onclick=()=>{$("#sc").hidden=true;drawD();drawN()};
+const tot=k=>C[k]?C[k].t:0;
+function drawD(){$("#dz").innerHTML=DZ.map((d,i)=>(i==0?"<h1>Zikrler</h1>":i==5?"<h1>Salawatlar (Paygambarimizge)</h1>":"")+`<div class="card" data-i="${i}"><div class="ar" style="font-size:26px;line-height:1.8;color:var(--gold)">${d[1]}</div><div class="tr">${d[0]}</div>${i<5?`<small style="color:var(--mut)">${d[2]}</small>`:""}<span class="cnt">${tot("d"+i)}</span></div>`).join("")}
+$("#dz").onclick=e=>{const c=e.target.closest("[data-i]");if(!c)return;const d=DZ[c.dataset.i];openS("d"+c.dataset.i,d[1],d[0],+c.dataset.i<5?d[2]:"",d[3])};
+// 99 names
+const N=`الرحمن|Ar-Rahman|Meyirimli
+الرحيم|Ar-Rahim|Rahimli
+الملك|Al-Malik|Patsha
+القدوس|Al-Quddus|Pák
+السلام|As-Salam|Salamatlıq beriwshi
+المؤمن|Al-Mumin|Qáwipsizlik beriwshi
+المهيمن|Al-Muhaymin|Qorǵawshı
+العزيز|Al-Aziz|Qúdiretli
+الجبار|Al-Jabbar|Zor
+المتكبر|Al-Mutakabbir|Ullı
+الخالق|Al-Khaliq|Jaratıwshı
+البارئ|Al-Bari|Dúziwshi
+المصور|Al-Musawwir|Suwret beriwshi
+الغفار|Al-Ghaffar|Keship ketiwshi
+القهار|Al-Qahhar|Jeńiwshi
+الوهاب|Al-Wahhab|Sıylıq beriwshi
+الرزاق|Ar-Razzaq|Rızıq beriwshi
+الفتاح|Al-Fattah|Ashıwshı
+العليم|Al-Alim|Biliwshi
+القابض|Al-Qabid|Qısıwshı
+الباسط|Al-Basit|Keńeytiwshi
+الخافض|Al-Khafid|Tómenletiwshi
+الرافع|Ar-Rafi|Kóteriwshi
+المعز|Al-Muizz|Izzet beriwshi
+المذل|Al-Mudhill|Past etiwshi
+السميع|As-Sami|Esitiwshi
+البصير|Al-Basir|Kóriwshi
+الحكم|Al-Hakam|Húkim etiwshi
+العدل|Al-Adl|Ádil
+اللطيف|Al-Latif|Názik
+الخبير|Al-Khabir|Xabardar
+الحليم|Al-Halim|Shıdamlı
+العظيم|Al-Azim|Ullı
+الغفور|Al-Ghafur|Keshirimli
+الشكور|Ash-Shakur|Minnetdar
+العلي|Al-Ali|Joqarı
+الكبير|Al-Kabir|Úlken
+الحفيظ|Al-Hafiz|Saqlawshı
+المقيت|Al-Muqit|Azıq beriwshi
+الحسيب|Al-Hasib|Esaplawshı
+الجليل|Al-Jalil|Ullılıq iyesi
+الكريم|Al-Karim|Sıyshıl
+الرقيب|Ar-Raqib|Baqlawshı
+المجيب|Al-Mujib|Juwap beriwshi
+الواسع|Al-Wasi|Keń
+الحكيم|Al-Hakim|Danısh
+الودود|Al-Wadud|Súyiwshi
+المجيد|Al-Majid|Ullı
+الباعث|Al-Baith|Tirilti riwshi
+الشهيد|Ash-Shahid|Gúwa
+الحق|Al-Haqq|Haqıyqat
+الوكيل|Al-Wakil|Isenimli
+القوي|Al-Qawi|Kúshli
+المتين|Al-Matin|Berik
+الولي|Al-Wali|Joldas
+الحميد|Al-Hamid|Maqtawlı
+المحصي|Al-Muhsi|Sanawshı
+المبدئ|Al-Mubdi|Baslawshı
+المعيد|Al-Muid|Qaytarıwshı
+المحيي|Al-Muhyi|Janlandırıwshı
+المميت|Al-Mumit|Ólim beriwshi
+الحي|Al-Hayy|Tiri
+القيوم|Al-Qayyum|Máńgi turıwshı
+الواجد|Al-Wajid|Tabıwshı
+الماجد|Al-Majid|Ullı
+الواحد|Al-Wahid|Birew
+الأحد|Al-Ahad|Jalǵız
+الصمد|As-Samad|Muhtajsız
+القادر|Al-Qadir|Qádir
+المقتدر|Al-Muqtadir|Qúdiretli
+المقدم|Al-Muqaddim|Aldına alıwshı
+المؤخر|Al-Muakhkhir|Keyinge qaldırıwshı
+الأول|Al-Awwal|Birinshi
+الآخر|Al-Akhir|Aqırǵı
+الظاهر|Az-Zahir|Ashıq
+الباطن|Al-Batin|Jasırın
+الوالي|Al-Wali|Basqarıwshı
+المتعالي|Al-Mutaali|Joqarı turıwshı
+البر|Al-Barr|Jaqsılıq etiwshi
+التواب|At-Tawwab|Tobanı qabıl etiwshi
+المنتقم|Al-Muntaqim|Jazalawshı
+العفو|Al-Afuww|Keshirimli
+الرؤوف|Ar-Rauf|Rahmdil
+مالك الملك|Malik-ul-Mulk|Mámleket iyesi
+ذو الجلال والإكرام|Dhul-Jalal wal-Ikram|Ullılıq iyesi
+المقسط|Al-Muqsit|Ádil
+الجامع|Al-Jami|Jıynawshı
+الغني|Al-Ghani|Bay
+المغني|Al-Mughni|Bay etiwshi
+المانع|Al-Mani|Tosıwshı
+الضار|Ad-Darr|Zıyan beriwshi
+النافع|An-Nafi|Paydalı
+النور|An-Nur|Nur
+الهادي|Al-Hadi|Jol kórsetiwshi
+البديع|Al-Badi|Jaratıwshı
+الباقي|Al-Baqi|Máńgi qalıwshı
+الوارث|Al-Warith|Miraskúr
+الرشيد|Ar-Rashid|Dúrıs jolǵa baslawshı
+الصبور|As-Sabur|Sabırlı`.split("\n");
+function drawN(){$("#names").innerHTML=N.map((l,i)=>{const[a,t,m]=l.split("|"),c=tot("n"+(i+1));return `<div class="card nm" data-n="${i}"><i>${i+1}${c?" · "+c:""}</i><div class="ar">${a}</div><b>${t}</b><br><span>${m}</span></div>`}).join("")}
+$("#names").onclick=e=>{const c=e.target.closest("[data-n]");if(!c)return;const i=+c.dataset.n,[a,t,m]=N[i].split("|");openS("n"+(i+1),a,t,m,33)};
+drawN();drawD();
+// Duwalar: arabsha, oqılıwı, awdarması
+const DU=[
+["Uyqılar aldınan","بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا","Bismika Allahumma amutu wa ahya","Ya Alla, Seniń atıń menen ólemen hám tirilemen."],
+["Uyqıdan turǵanda","الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ","Alhamdu lillahillazi ahyana ba’da ma amatana wa ilayhin-nushur","Bizdi óltirgennen keyin tiriltken Allaǵa hámd bolsın, qaytıw Oǵan."],
+["Tamaq aldınan","بِسْمِ اللَّهِ","Bismillah","Allanıń atı menen."],
+["Tamaqtan keyin","الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنَا وَسَقَانَا وَجَعَلَنَا مُسْلِمِينَ","Alhamdu lillahillazi at’amana wa saqana wa ja’alana muslimin","Bizdi tamaqlandırǵan, suwlandırǵan hám musılman etken Allaǵa hámd bolsın."],
+["Úyden shıqqanda","بِسْمِ اللَّهِ تَوَكَّلْتُ عَلَى اللَّهِ لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ","Bismillahi tawakkaltu ’alallah, la hawla wa la quwwata illa billah","Allanıń atı menen, Allaǵa tayandım; kúsh-quwat tek Allada."],
+["Úyge kirgende","بِسْمِ اللَّهِ وَلَجْنَا وَبِسْمِ اللَّهِ خَرَجْنَا وَعَلَى رَبِّنَا تَوَكَّلْنَا","Bismillahi walajna wa bismillahi xarajna wa ’ala Rabbina tawakkalna","Allanıń atı menen kirdik, atı menen shıqtıq, Rabbimizge tayandıq."],
+["Mesjitke kirgende","اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ","Allahummaftah li abwaba rahmatik","Ya Alla, maǵan rahmetiń esiklerin ash."],
+["Mesjitten shıqqanda","اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ","Allahumma inni as’aluka min fadlik","Ya Alla, Senen artıqmashılıqtı soraymán."],
+["Sapar duwası","سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ","Subhanallazi saxxara lana haza wa ma kunna lahu muqrinin, wa inna ila Rabbina lamunqalibun","Buǵan bizdi boysındırǵan Alla pák; biz oǵan qádir emes edik, Rabbimizge qaytamız."],
+["Tań atqanda","أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ وَالْحَمْدُ لِلَّهِ","Asbahna wa asbaha-l-mulku lillah, wal-hamdu lillah","Tańǵa kirdik, pútkil mámleket Allaǵa tiyisli, hámd Allaǵa."],
+["Keshke kirgende","أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ وَالْحَمْدُ لِلَّهِ","Amsayna wa amsa-l-mulku lillah, wal-hamdu lillah","Keshke kirdik, pútkil mámleket Allaǵa tiyisli, hámd Allaǵa."],
+["Kiyim kiygende","الْحَمْدُ لِلَّهِ الَّذِي كَسَانِي هَذَا وَرَزَقَنِيهِ مِنْ غَيْرِ حَوْلٍ مِنِّي وَلَا قُوَّةٍ","Alhamdu lillahillazi kasani haza wa razaqanihi min ghayri hawlin minni wa la quwwa","Meniń kúshim bolmastan buni kiydirgen hám rızıq etken Allaǵa hámd bolsın."],
+["Ayna aldında","اللَّهُمَّ أَنْتَ حَسَّنْتَ خَلْقِي فَحَسِّنْ خُلُقِي","Allahumma anta hassanta xalqi fa hassin xuluqi","Ya Alla, jaratılısımdı jaqsı etkeniń sıyaqlı minezimdi de jaqsı et."],
+["Hajetxanaǵa kirgende","بِسْمِ اللَّهِ اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبُثِ وَالْخَبَائِثِ","Bismillah, Allahumma inni a’uzu bika minal-xubusi wal-xaba’is","Allanıń atı menen. Ya Alla, jaman nárselerden Saǵan sıǵınaman."],
+["Hajetxanadan shıqqanda","غُفْرَانَكَ","Ghufranak","Keshirimińdi soraymán."],
+["Dáret alǵannan keyin","أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ","Ashhadu an la ilaha illallahu wahdahu la sharika lah, wa ashhadu anna Muhammadan ’abduhu wa rasuluh","Alladan basqa ilah joq, Ol jalǵız, serigi joq; Muhammed Onıń quli hám elshisi ekenine gúwalıq beremen."],
+["Azannan keyin","اللَّهُمَّ رَبَّ هَذِهِ الدَّعْوَةِ التَّامَّةِ وَالصَّلَاةِ الْقَائِمَةِ آتِ مُحَمَّدًا الْوَسِيلَةَ وَالْفَضِيلَةَ","Allahumma Rabba hazihid-da’watit-tammati was-salatil-qa’imati ati Muhammadanil-wasilata wal-fadilah","Ya Alla, bul kámil shaqırıwdıń hám oqılatuǵın namazdıń Rabbisi, Muhammedke wasila hám artıqmashılıq ber."],
+["Qayǵı-muńda","اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ","Allahumma inni a’uzu bika minal-hammi wal-hazan","Ya Alla, qayǵı hám muńnan Saǵan sıǵınaman."],
+["Bilim sorawda","رَبِّ زِدْنِي عِلْمًا","Rabbi zidni ’ilma","Rabbim, bilimimdi arttır."],
+["Dúnya hám ahiret jaqsılıǵı","رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ","Rabbana atina fid-dunya hasanatan wa fil-axirati hasanatan wa qina ’azaban-nar","Rabbimiz, bizge dúnyada da, ahiretde de jaqsılıq ber hám bizdi tozaq azabınan saqla."],
+["Jawın jawǵanda","اللَّهُمَّ صَيِّبًا نَافِعًا","Allahumma sayyiban nafi’a","Ya Alla, paydalı jawın ber."],
+["Shamalaǵanda","الْحَمْدُ لِلَّهِ","Alhamdulillah (esitkenge: Yarhamukallah)","Hámd Allaǵa. Esitken adam: «Alla saǵan rahm etsin» deydi."]];
+$("#duas").innerHTML=DU.map(d=>`<details><summary>${d[0]}</summary><div class="ar">${d[1]}</div><p class="tr">${d[2]}</p><p>${d[3]}</p></details>`).join("");
+// Sahıyh hadisler (Buxariy hám Muslim)
+const HD=[
+["Ámeller niyetke qaray bahalanadı, hár kimge niyet etkeni boladı.","Buxariy, Muslim"],
+["Sizlerdiń eń jaqsıńız — Quranǵa úyrenip, basqalarǵa úyretken adam.","Buxariy"],
+["Musılman — basqa musılmanlar tilinen hám qolınan salamat bolǵan adam.","Buxariy, Muslim"],
+["Hesh birińiz ózine súygenin qarındasıńa da súymegenshe haqıyqıy iyman keltirgen bolmaysız.","Buxariy, Muslim"],
+["Kim Allaǵa hám ahiret kúnine iyman keltirse, jaqsı sóz sóylesin yamasa úndemesin.","Buxariy, Muslim"],
+["Kúshli adam gúreste jeńgen emes; ǵazaplanǵanda ózin uslay alǵan adam kúshli.","Buxariy, Muslim"],
+["Eki sóz tilge jeńil, tarazıda awır, Rahmanǵa súyikli: Subhanallahi wa bihamdihi, Subhanallahil-Azim.","Buxariy, Muslim"],
+["Allaǵa eń súyikli amel — namazdı óz waqtında oqıw, soń ata-anaǵa jaqsılıq etiw.","Buxariy, Muslim"],
+["Kim bilim izlep jol júrse, Alla oǵa jánnetke barar jolın ańsat etedi.","Muslim"],
+["Tazalıq — imannıń yarımı.","Muslim"],
+["Jibril maǵan qońsı haqqında sonshelli ósiyet etti, hátteki ol qońsını mirasqa ortaq etedi dep oyladım.","Buxariy, Muslim"],
+["Jetimdi qorǵawshı menen men jánnette mine bunday bolaman (eki barmaǵın jaqın qoydı).","Buxariy"],
+["Allah sizdiń sıpatıńızǵa hám maldıńızǵa emes, júregińizge hám ámelińizge qaraydı.","Muslim"],
+["Ras sóylewden shınlıq, shınlıqtan jánnet jolı boladı. Jalǵannan saqlanıń.","Buxariy, Muslim"],
+["Adam súygeni menen birge boladı.","Buxariy, Muslim"],
+["Hár bir jaqsılıq sadaqa bolıp esaplanadı.","Buxariy, Muslim"],
+["Bir-birińizge hásetlik qılmań, bir-birińizge dushpan bolmań; Allahtıń quları, ǵárdesler bolıń.","Buxariy, Muslim"],
+["Jaqsılıqtan hesh nárseni kishi sanama, hátteki qardasıńa jarqın júz benen jolıǵıwdı da.","Muslim"],
+["Júreginde zerre qádirli ózin úlken sanaw bar adam jánnetke kirmeydi.","Muslim"],
+["Haya — iymannıń bir tarmaǵı.","Buxariy, Muslim"],
+["Eki nemetke kóp adam aldanǵan: densawlıq hám bos waqıt.","Buxariy"],
+["Dúnyada musapır yamasa jolawshıday bol.","Buxariy"],
+["Hár biriń basshısız, hár biriń qaramaǵındaǵılar haqqında soraladı.","Buxariy, Muslim"],
+["Kim jaqsılıqqa baslasa, oǵan sol jaqsılıqtı islegenlerdiń sawabınday sawab bar.","Muslim"],
+["Sadaqa maldı kemeytpeydi.","Muslim"],
+["Mumınniń isi tańlanarlıq: quwanısh kelse shúkir etedi, qıyınshılıq kelse sabır etedi, ekewi de oǵan jaqsılıq.","Muslim"],
+["Bes waqıt namaz, Juma namazı hám Ramazan, olar arasındaǵı gúnalarǵa kepil.","Muslim"],
+["Kim Ramazanda iyman hám sawab niyeti menen oraza tutsa, burınǵı gúnaları keshiriledi.","Buxariy, Muslim"],
+["Allah: «Meniń rahmetim ǵazabımnan ozıp ketti» dep jazdı.","Buxariy, Muslim"],
+["Kim bir mumınniń dúnyadaǵı qıyınshılıǵın jeńillestirse, Alla qıyamet kúni oǵan jeńillik beredi.","Muslim"],
+["Hár bir bala pıtratqa (taza) tuwıladı.","Buxariy, Muslim"]];
+const hn=new Date(Date.now()+TZ*36e5),dy=Math.floor((Date.UTC(hn.getUTCFullYear(),hn.getUTCMonth(),hn.getUTCDate())-Date.UTC(hn.getUTCFullYear(),0,0))/864e5);
+const hi=dy%HD.length;
+$("#hd").innerHTML=`<small style="color:var(--gold)">Búgingi hadis</small><p style="font-size:18px;line-height:1.5">${HD[hi][0]}</p><small style="color:var(--mut)">Sahıyh · ${HD[hi][1]}</small>`;
+$("#ha").innerHTML=HD.map((h,k)=>`<details><summary>${k+1}. ${h[0].slice(0,38)}…</summary><p>${h[0]}</p><p>${h[1]}</p></details>`).join("");
+
+// Islam kalendarı
+const HM=["Muharram","Safar","Rabiul-awwal","Rabiul-axir","Jumadul-ula","Jumadul-axira","Rajab","Shaban","Ramazan","Shawwal","Zul-qada","Zul-hijja"];
+const GM=["Yanvar","Fevral","Mart","Aprel","May","Iyun","Iyul","Avgust","Sentyabr","Oktyabr","Noyabr","Dekabr"];
+let hf=null;try{hf=new Intl.DateTimeFormat("en-u-ca-islamic-umalqura",{day:"numeric",month:"numeric",year:"numeric",timeZone:"UTC"})}catch(e){}
+const hj=t=>{const o={d:1,m:1,y:0};try{hf.formatToParts(new Date(t)).forEach(p=>{if(p.type=="day")o.d=+p.value;if(p.type=="month")o.m=+p.value;if(p.type=="year")o.y=+p.value})}catch(e){}return o};
+const B=Date.UTC(hn.getUTCFullYear(),hn.getUTCMonth(),hn.getUTCDate(),12),H0=hj(B);
+const fmt=t=>{const d=new Date(t);return d.getUTCDate()+" "+GM[d.getUTCMonth()]};
+$("#hj").innerHTML=`<small>Búgingi hijriy sane</small><div class="big" style="font-size:30px">${H0.d} ${HM[H0.m-1]} ${H0.y}</div><small>${fmt(B)} ${hn.getUTCFullYear()} · hijriy jıl</small>`;
+let mo=0;
+function drawCal(){
+  const f=new Date(Date.UTC(hn.getUTCFullYear(),hn.getUTCMonth()+mo,1,12)),Y=f.getUTCFullYear(),M=f.getUTCMonth(),n=new Date(Date.UTC(Y,M+1,0)).getUTCDate(),w=(f.getUTCDay()+6)%7;
+  $("#mt").textContent=GM[M]+" "+Y;
+  let h=["Dú","Si","Sá","Pi","Ju","Sh","Ye"].map(x=>`<div class="hd">${x}</div>`).join("")+"<div></div>".repeat(w);
+  for(let d=1;d<=n;d++){const t=Date.UTC(Y,M,d,12),q=hj(t);h+=`<div class="${t==B?"td":""}">${d}<small>${q.d==1?HM[q.m-1].slice(0,4)+" 1":q.d}</small></div>`}
+  $("#cal").innerHTML=h}
+$("#mp").onclick=()=>{mo--;drawCal()};$("#mn").onclick=()=>{mo++;drawCal()};drawCal();
+const HA=[];for(let k=-30;k<=430;k++)HA.push([k,hj(B+k*864e5)]);
+const EV=[["Hijriy jańa jıl",1,1],["Áshúra kúni",1,10],["Ramazan baslanadı",9,1],["Qadir keshesi (27-Ramazan)",9,27],["Oraza hayıt",10,1],["Arafa kúni",12,9],["Qurban hayıt",12,10]];
+$("#ev").innerHTML="<b>Aldaǵı áhmiyetli kúnler</b>"+EV.map(e=>{const a=HA.find(x=>x[0]>=0&&x[1].m==e[1]&&x[1].d==e[2]);return a?`<div class="row"><span>${e[0]}<br><small style="color:var(--mut)">${fmt(B+a[0]*864e5)}</small></span><b>${a[0]?a[0]+" kún":"búgin"}</b></div>`:""}).join("")+`<small style="color:var(--mut)">Kúnler ay kóriniwine qaray 1 kúnge parıq qılıwı múmkin.</small>`;
+const rs=HA.find(x=>x[0]>=-29&&x[1].m==9&&x[1].d==1);
+if(rs){
+  const rows=[];
+  for(let j=0;j<30;j++){const t=B+(rs[0]+j)*864e5;if(hj(t).m!=9)break;const d=new Date(t),T=calc(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate());rows.push([j+1,t,hm(T[0][1]),hm(T[4][1])])}
+  const td=rows.find(r=>r[1]==B);
+  const dl=rs[0],pre=!td&&dl>0&&dl<=7;
+  if(!td){$("#rd").style.display="none";if(!pre){$("#rm").style.display="none";$("#rh").style.display="none"}}
+  const nb=td?`🌙 Ramazan ${td[0]}-kúni · Saharlik <b>${td[2]}</b> · Iftar <b>${td[3]}</b>`:pre?`🌙 Ramazan baslanıwına <b>${dl} kún</b> qaldı. Tayarlıq kóriń!`:"";
+  if(nb){const e=document.createElement("div");e.className="card";e.style.cssText="background:var(--ac);color:#fff;border:0";e.innerHTML=nb;$("#t0").insertBefore(e,$("#t0").children[1])}
+  $("#rm").innerHTML=td?`<b>Ramazan ${td[0]}-kúni</b><div class="row"><span>Saharlik (awız jabıw)</span><b>${td[2]}</b></div><div class="row"><span>Iftar (awız ashıw)</span><b>${td[3]}</b></div>`:`<b>Ramazan baslanıwına ${rs[0]} kún qaldı</b><br><small style="color:var(--mut)">Baslanıwı: ${fmt(rs[1]?B+rs[0]*864e5:B)} (shama menen)</small><br><small>Oraza maǵlıwmatları (awız ashıw/jabıw duwaları, keste) Ramazan baslanǵan kúnnen baslap ashıladı.</small>`;
+  const DR=[["Awız jabıw (saharlik niyeti)","نَوَيْتُ أَنْ أَصُومَ صَوْمَ شَهْرِ رَمَضَانَ مِنَ الْفَجْرِ إِلَى الْمَغْرِبِ خَالِصًا لِلَّهِ تَعَالَى","Nawaytu an asuma sawma shahri Ramazana minal-fajri ilal-maghribi, xalisan lillahi ta’ala","Ramazan ayınıń orazasın tań atqannan kún batqanǵa shekem, tek Alla ushın tutıwǵa niyet ettim."],
+  ["Awız ashıw (iftar duwası)","اللَّهُمَّ لَكَ صُمْتُ وَبِكَ آمَنْتُ وَعَلَيْكَ تَوَكَّلْتُ وَعَلَى رِزْقِكَ أَفْطَرْتُ","Allahumma laka sumtu wa bika amantu wa ’alayka tawakkaltu wa ’ala rizqika aftartu","Ya Alla, Sen ushın oraza tuttım, Saǵan iyman keltirdim, Saǵan tayandım hám Seniń rızıqıń menen awız ashtım."],
+  ["Awız ashqannan keyin","ذَهَبَ الظَّمَأُ وَابْتَلَّتِ الْعُرُوقُ وَثَبَتَ الْأَجْرُ إِنْ شَاءَ اللَّهُ","Zahabaz-zama’u wabtallatil-’uruqu wa sabatal-ajru in sha Allah","Shóllew ketti, tamırlar shıǵındı, Alla qálese sawab bekkemlendi."]];
+  $("#rd").innerHTML=DR.map(d=>`<details open><summary>${d[0]}</summary><div class="ar">${d[1]}</div><p class="tr">${d[2]}</p><p>${d[3]}</p></details>`).join("")+`<details><summary>Ramazan kestesi (saharlik / iftar)</summary>${rows.map(r=>`<div class="row"><span>${r[0]}-Ramazan · ${fmt(r[1])}</span><span>${r[2]} / <b>${r[3]}</b></span></div>`).join("")}</details>`;
+}
+// Splash
+const sp=$("#sp"),hs=()=>{sp.style.opacity=0;setTimeout(()=>sp.remove(),800)};setTimeout(hs,2400);sp.onclick=hs;
+// Telegram mini app (Telegram ishinde ashılǵanda)
+try{const q=document.createElement("script");q.src="https://telegram.org/js/telegram-web-app.js";q.onload=()=>{try{Telegram.WebApp.ready();Telegram.WebApp.expand()}catch(e){}};document.head.appendChild(q)}catch(e){}
+</script>
+</body>
+</html>
