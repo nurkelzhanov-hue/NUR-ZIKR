@@ -113,6 +113,10 @@ nav button.a{border-color:var(--gold-light);box-shadow:0 0 12px rgba(241,207,114
 .ar2{position:absolute;top:50%;width:46px;height:46px;border-radius:50%;border:2px solid var(--gold-light);background:rgba(7,26,44,.6);color:var(--gold-light);font-size:28px;line-height:1}#pv{left:8px}#nx2{right:8px}
 #sp{background:#06142a var(--spl) center 35%/100% auto no-repeat}#sp>*,#sp svg{display:none}
 #sc>*{z-index:2}#sc::after{z-index:1;-webkit-mask-image:linear-gradient(transparent,#000 45%);mask-image:linear-gradient(transparent,#000 45%)}
+#acts{justify-content:center}
+#fin,#sc.lg #fin{position:absolute;left:50%;right:auto;bottom:auto;transform:translate(-50%,-50%);width:min(calc(100% - 116px),340px);background:rgba(5,20,38,.96);border:2px solid #f1cf72;border-radius:20px;padding:14px 12px;box-shadow:0 0 26px rgba(241,207,114,.4);z-index:4;pointer-events:none}
+#fin .ar,#sc.lg #fin .ar{font-size:32px;color:#f1cf72;line-height:1.7}
+#fin small,#sc.lg #fin small{font-size:17px;color:#fff;opacity:1;display:block;margin-top:4px;line-height:1.35}
 </style>
 </head>
 <body>
@@ -139,9 +143,9 @@ nav button.a{border-color:var(--gold-light);box-shadow:0 0 12px rgba(241,207,114
 <div class="top"><div class="ar" id="sa"></div><div class="ln"></div><b id="sl"></b><small id="sm"></small></div>
 <canvas id="bd"></canvas>
 <div id="ct"><svg viewBox="0 0 84 84"><circle cx="42" cy="42" r="36" fill="#141a1f" stroke="rgba(255,255,255,.15)" stroke-width="4"/><circle id="rg" cx="42" cy="42" r="36" fill="none" stroke="#e8512f" stroke-width="4" stroke-linecap="round" stroke-dasharray="226" stroke-dashoffset="226" transform="rotate(-90 42 42)"/></svg><b id="cn">0</b><small id="cg">/33</small></div>
-<div id="acts"><button class="ab" id="rsb">↻ Qayta baslaw</button><div class="tapb">👆</div><button class="ab" id="fnb">✓ Támamlaw</button></div>
+<div id="acts"><div class="tapb">👆</div></div>
 <button class="ar2" id="pv">‹</button><button class="ar2" id="nx2">›</button>
-<div id="stg" hidden><label><input type="checkbox" id="sn" checked> Dawıs (tiq-tiq)</label><label><input type="checkbox" id="sv" checked> Vibraciya</label></div>
+<div id="stg" hidden><label><input type="checkbox" id="sn" checked> Dawıs (tiq-tiq)</label><label><input type="checkbox" id="sv" checked> Vibraciya</label><button class="btn" id="rz">Sanaqtı nollew</button></div>
 <div id="fin"><div class="ar">تَقَبَّلَ اللَّهُ مِنَّا وَمِنكُم</div><small>Taqabbalallahu minna wa minkum</small><small>Alla bizden hám sizden qabıl etsin</small></div>
 </div>
 <section id="t4" class="pane"><h1>Kúndelikli hadis</h1><div class="card" id="hd"></div><div class="card" id="ha"></div></section>
@@ -443,7 +447,7 @@ function drawRing(){
   const c=$("#bd"),k=C[cur];if(!k)return;
   const W=innerWidth,H=innerHeight,lg=$("#sc").classList.contains("lg"),S=Math.min(W*.66,H*(lg?.2:.27)),T=H*(lg?.57:.34);
   c.width=S*1.2;c.height=S*1.5;c.style.top=T+"px";c.style.width=c.width+"px";c.style.height=c.height+"px";
-  $("#ct").style.top=(T+S*.6)+"px";$("#acts").style.top=(T+S*1.5)+"px";
+  $("#ct").style.top=(T+S*.6)+"px";$("#acts").style.top=(T+S*1.5)+"px";$("#fin").style.top=(T+S*.6)+"px";
   const x=c.getContext("2d"),cx=c.width/2,cy=S*.6,R=S*.5,N=33,lit=Math.round(k.n*N/k.g);
   x.strokeStyle="rgba(217,180,90,.6)";x.lineWidth=1.5;x.beginPath();x.arc(cx,cy,R,0,7);x.stroke();
   for(let i=0;i<N;i++){const a=-Math.PI/2+i*2*Math.PI/N,bx=cx+R*Math.cos(a),by=cy+R*Math.sin(a),on=i<lit,r=S*.043;
@@ -459,9 +463,9 @@ function goS(d){const t=cur[0],i=+cur.slice(1);
   if(t=="d"){const j=(i+d+DZ.length)%DZ.length,z=DZ[j];openS("d"+j,z[1],z[0],j<5?z[2]:"",z[3])}
   else{const j=(i-1+d+99)%99,[a,l,m]=N[j].split("|");openS("n"+(j+1),a,l,m,33)}}
 $("#pv").onclick=()=>goS(-1);$("#nx2").onclick=()=>goS(1);
-$("#rsb").onclick=()=>{const c=C[cur];c.n=0;$("#fin").style.opacity=0;save();upd()};
-$("#fnb").onclick=()=>{const c=C[cur];if(c.n<c.g){c.n=c.g;c.r++}clk(1);vib([80,50,80]);$("#fin").style.opacity=1;save();upd()};
-$("#gr").onclick=()=>{$("#stg").hidden=!$("#stg").hidden};
+
+
+$("#gr").onclick=()=>{$("#stg").hidden=!$("#stg").hidden};$("#rz").onclick=()=>{const c=C[cur];c.n=0;$("#fin").style.opacity=0;save();upd();$("#stg").hidden=true};
 $("#sn").checked=SND;$("#sv").checked=VIB;
 $("#sn").onchange=e=>{SND=e.target.checked;try{localStorage.setItem("snd",SND?"1":"0")}catch(x){}};
 $("#sv").onchange=e=>{VIB=e.target.checked;try{localStorage.setItem("vib",VIB?"1":"0")}catch(x){}};
