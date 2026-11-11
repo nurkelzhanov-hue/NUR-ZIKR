@@ -124,8 +124,10 @@ def handle(m, d, U):
         send(c, today()[1])
     elif t.startswith("/stop") and c in d["chats"]:
         d["chats"].remove(c); save(d); send(c, "Eskertiw óshirildi.")
-    elif t.startswith("/stats") and c == ADMIN:
-        send(c, stats_text(U, d))
+    elif t.startswith("/id"):
+        send(c, f"Sizdiń Telegram ID ińiz: {c}\n.env fayl ge ADMIN_ID={c} dep jazıp, bottı qayta iske túsiriń.")
+    elif t.startswith("/stats"):
+        send(c, stats_text(U, d) if c == ADMIN else "Bul buyrıq tek bot iyesi ushın. ID ińizdi bilıw ushın /id jazıń.")
 
 def main():
     if not TOKEN or not WEBAPP:
