@@ -436,8 +436,12 @@ if(rs){
 }
 // Splash
 const sp=$("#sp"),hs=()=>{sp.style.opacity=0;setTimeout(()=>sp.remove(),800)};setTimeout(hs,2400);sp.onclick=hs;
+// Statistika: Cloudflare Worker siltemesin usı jerge jazıń (stats/STATS_GUIDE.md), bos bolsa islemeydi
+const STATS_URL="";
+function nzPing(first){try{const w=Telegram.WebApp;if(!STATS_URL||!w.initData)return;fetch(STATS_URL+"/ping",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({initData:w.initData,open:!!first}),keepalive:true}).catch(()=>{})}catch(e){}}
+setInterval(()=>{if(!document.hidden)nzPing(false)},120000);
 // Telegram mini app (Telegram ishinde ashılǵanda)
-try{const q=document.createElement("script");q.src="https://telegram.org/js/telegram-web-app.js";q.onload=()=>{try{Telegram.WebApp.ready();Telegram.WebApp.expand()}catch(e){}};document.head.appendChild(q)}catch(e){}
+try{const q=document.createElement("script");q.src="https://telegram.org/js/telegram-web-app.js";q.onload=()=>{try{Telegram.WebApp.ready();Telegram.WebApp.expand();nzPing(true)}catch(e){}};document.head.appendChild(q)}catch(e){}
 
 // === Jańa dizayn: tasbeh sақıyna, dawıs, til ===
 window.VIB=true;let SND=true;try{SND=localStorage.getItem("snd")!=="0";VIB=localStorage.getItem("vib")!=="0"}catch(e){}

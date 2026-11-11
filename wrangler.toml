@@ -1,0 +1,8 @@
+name = "nurzikr-stats"
+main = "worker.js"
+compatibility_date = "2025-01-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "nurzikr"
+database_id = "BU_JERGE_wrangler_BERGEN_ID_JAZILADI"
